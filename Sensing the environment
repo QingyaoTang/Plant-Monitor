@@ -1,0 +1,47 @@
+// Define an analog pin for measuring soil moisture
+uint8_t soilPin = 0;
+// Variable to store moisture value
+int moisture_val;
+
+// Digital pin used to power the sensor
+int sensorVCC = 13;
+// Counter to control the time interval for powering the sensor and reading moisture
+int counter = 0;
+
+void setup() {
+  // Initialize serial communication for outputting data to the serial monitor
+  Serial.begin(115200);
+  // Set the sensor power pin as an output
+  pinMode(sensorVCC, OUTPUT);
+  // Set the sensor power pin to LOW to initially turn off power
+  digitalWrite(sensorVCC, LOW);
+}
+
+void loop() {
+  // Increment the counter
+  counter++;
+  // If the counter exceeds 6 (adjust this value to set the "not powered" time, larger values mean longer intervals)
+  if (counter > 6) {
+    // Power the sensor
+    digitalWrite(sensorVCC, HIGH);
+    // Delay for 1 second to allow the sensor to stabilize
+    delay(1000);
+    // Read the moisture value from the sensor
+    moisture_val = analogRead(soilPin); // Read the resistance value
+    // Turn off power
+    digitalWrite(sensorVCC, LOW);
+    // Delay for 100 milliseconds to ensure the sensor is completely powered off
+    delay(100);
+
+    // Output the moisture value to the serial monitor
+    Serial.print("Sensor = ");
+    Serial.println(moisture_val);
+    // Reset the counter
+    counter = 0;
+  }
+
+  // Output a dot to indicate that the code is running
+  Serial.print(".");
+  // Delay for 1 second to control the loop speed
+  delay(1000);
+}
