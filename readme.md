@@ -32,6 +32,37 @@ This project uses the ESP8266 as the primary controller, combined with the DHT22
 ![InfluxDB](https://github.com/QingyaoTang/Plant-Monitor/blob/main/Screenshot%202023-11-01%20at%2010.25.42.png)
 - Telegraf
 
+## Step 1: Hardware Assembly
+
+1. Connect the DHT22 sensor to the ESP8266, ensuring the connections are correct.
+2. Insert the DHT22 sensor into the soil of the plant using iron nails.
+3. Connect the buzzer to the ESP8266 to enable it to produce alerts.
+4. Connect the Raspberry Pi to the ESP8266 for internet connectivity.
+
+## Step 2: Software Installation
+
+1. Install the Arduino IDE and open the Arduino code for the project.
+2. Configure the Wi-Fi settings in the Arduino code to ensure the ESP8266 connects to the internet correctly.
+3. Install InfluxDB and Telegraf and ensure they are running properly.
+
+## Step 3: GitHub Project
+
+1. Access the GitHub repository: [github](https://github.com/QingyaoTang).
+2. Clone the project to your local computer.
+3. Follow the instructions in the README file to configure the GitHub repository.
+
+## Step 4: System Start-Up
+
+1. Start the ESP8266 and Raspberry Pi.
+2. Monitor the system output to ensure sensor data is successfully uploaded to InfluxDB.
+3. Access real-time data by using a web browser to visit the IP address of the Raspberry Pi.
+
+## Step 5: Maintenance and Calibration
+
+1. Regularly calibrate the sensors to ensure accuracy.
+2. Maintain the system to ensure hardware is functioning correctly.
+3. Address any issues or error messages.
+
 ## Limitations:
 1. **Accuracy of Moisture Measurement**: The use of nails might result in inaccurate moisture readings due to various soil factors.
 2. **Data Analysis & Decision Making**: Decisions on watering depend on various factors, requiring more advanced algorithms.
