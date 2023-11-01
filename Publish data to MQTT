@@ -24,7 +24,8 @@ void setup() {
 
   // Initialize WiFi connection
   startWifi();
-
+  pinMode(BUILTIN_LED, OUTPUT); 
+digitalWrite(BUILTIN_LED, HIGH);
   // Once connected to WiFi, establish a connection to the MQTT broker
   client.setServer(mqtt_server, 1884);
 
@@ -99,4 +100,10 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.print((char)payload[i]);
   }
   Serial.println();
+  // Switch on the LED if the first character of the message is "1"
+  if ((char)payload[0] == '1') {
+    digitalWrite(BUILTIN_LED, LOW); // Turn the LED on
+  } else {
+    digitalWrite(BUILTIN_LED, HIGH); // Turn the LED off
+  }
 }
