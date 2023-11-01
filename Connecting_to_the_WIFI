@@ -1,0 +1,71 @@
+#include <ESP8266WiFi.h>
+
+// Set the WiFi network's SSID and password
+const char* ssid     = "xxx";     // Replace with your WiFi network's SSID
+const char* password = "xxx";     // Replace with your WiFi network's password
+
+// Set the host to connect to
+const char* host = "iot.io";      // Replace with the address of the server you want to connect to
+
+void setup() {
+  // Initialize serial communication
+  Serial.begin(115200);
+  delay(100);
+
+  // Connect to the WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+
+  // Wait for a successful connection
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");  
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+int value = 0;
+
+void loop() {
+  delay(5000);
+  ++value;
+
+  Serial.println("-------------------------------");
+  Serial.print("Connecting to ");
+  Serial.println(host);
+
+  // Create a TCP connection using the WiFiClient class
+  WiFiClient client;
+  const int httpPort = 80;
+  if (!client.connect(host, httpPort)) {
+    Serial.println("Connection failed");
+    return;
+  }
+
+  // Create the URI for the HTTP request
+  String url = "/index.html";
+  Serial.print("Requesting URL: ");
+  Serial.println(host + url);
+
+  // Send the HTTP request to the server
+  String httpRequest = "GET " + url + " HTTP/1.1\r\n" +
+                      "Host: " + host + "\r\n" + 
+                      "Connection: close\r\n\r\n";
+  client.print(httpRequest);
+
+  delay(500);
+
+  // Read the server's response and print it to the serial port
+  while(client.available()){
+    String line = client.readStringUntil('\r');
+    Serial.print(line);
+  }
+
+  delay(1000000);  // Delay for some time before looping again
+}
