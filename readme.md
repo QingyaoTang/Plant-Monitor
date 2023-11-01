@@ -10,7 +10,7 @@ This project uses the ESP8266 as the primary controller, combined with the DHT22
 4. **Web Interface**: Allows users to visually access soil data, ensuring informed decisions on plant care.
 5. **Audible Alerts**: A buzzer alerts the user when the system detects that the soil temperature is too high or the humidity is too low.
 6. **Time Synchronization**: An online time synchronization function ensures accurate system timekeeping.
-
+![introduction](https://github.com/QingyaoTang/Plant-Monitor/blob/main/WechatIMG1610.jpg)
 ## Hardware Used:
 - DHT22 Sensor
 ![DHT22](https://github.com/QingyaoTang/Plant-Monitor/blob/main/WechatIMG1594.jpg)
@@ -25,6 +25,7 @@ This project uses the ESP8266 as the primary controller, combined with the DHT22
 - MQTT
 ![MQTT](https://github.com/QingyaoTang/Plant-Monitor/blob/main/Screenshot%202023-11-01%20at%2010.36.17.png)
 - Arduino IDE
+![Arduino IDE](https://github.com/QingyaoTang/Plant-Monitor/blob/main/Screenshot%202023-11-01%20at%2011.01.14.png)
 - GitHub
 ![github](https://github.com/QingyaoTang/Plant-Monitor/blob/main/Screenshot%202023-11-01%20at%2010.45.59.png)
 - InfluxDB
