@@ -1,0 +1,47 @@
+#include <ESP8266WiFi.h>
+#include <ezTime.h>
+
+// Replace with your WiFi network credentials
+const char* ssid = "CE-Hub-Student";
+const char* password = "casa-ce-gagarin-public-service";
+
+Timezone GB;
+
+void setup() {
+  Serial.begin(115200);
+  delay(100);
+
+  // Connect to the specified WiFi network
+  Serial.println();
+  Serial.print("Connecting to WiFi network: ");
+  Serial.println(ssid);
+  WiFi.begin(ssid, password);
+
+  // Wait for WiFi connection to be established
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  // Synchronize with an NTP time server
+  waitForSync();
+
+  // Print the current UTC time
+  Serial.println("Current UTC time: " + UTC.dateTime());
+
+  // Set the time zone to London
+  GB.setLocation("Europe/London");
+  // Print the current time in the London time zone
+  Serial.println("Current London time: " + GB.dateTime());
+}
+
+void loop() {
+  delay(1000);
+  // Print the current time in the London time zone in the "H:i:s" format
+  Serial.println("London time (HH:MM:SS): " + GB.dateTime("H:i:s"));
+}
