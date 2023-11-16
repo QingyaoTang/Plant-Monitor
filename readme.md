@@ -9,6 +9,7 @@ This project uses the ESP8266 as the primary controller, combined with the DHT22
 3. **Data Storage & Analysis**: Uses Influx DB for data storage and Telegraf for data collection, aiding in real-time analytics.
 4. **Web Interface**: Allows users to visually access soil data, ensuring informed decisions on plant care.
 5. **Audible Alerts**: A buzzer alerts the user when the system detects that the soil temperature is too high or the humidity is too low.
+![buzzer](https://github.com/QingyaoTang/Plant-Monitor/blob/main/WechatIMG1658.jpg)
 6. **Time Synchronization**: An online time synchronization function ensures accurate system timekeeping.
 ![introduction](https://github.com/QingyaoTang/Plant-Monitor/blob/main/WechatIMG1610.jpg)
 ## Hardware Used:
